@@ -20,4 +20,17 @@
 * Always use security filtering for GPOs
   - Use GPO Security Filtering to exclude specific OUs or user groups if necessary. 
 
- 
+ =================================================
+windows logrotate script and security practice
+* Script Location: Store your script in a secure directory (e.g., C:\Scripts or a custom folder). Avoid placing scripts in system directories or shared locations.
+* Permissions: Read-Only for Everyone: Set read-only permissions for everyone except administrators. Modify for Administrators: Only administrators should have write/modify permissions.
+* Signing Scripts: Digitally sign your script using a code-signing certificate. This ensures that the script hasn’t been tampered with.
+* Logging and Auditing: Log script execution (e.g., to Windows Event Logs or a separate log file). Or changes mby?
+* Execution Policy:  Set the PowerShell execution policy to restrict unauthorized script execution. Use Set-ExecutionPolicy Restricted or Set-ExecutionPolicy RemoteSigned.
+* To ensure your script runs after system restarts:
+      1.) Scheduled Task: Create a scheduled task that runs the script at startup.
+          Set the task to run with appropriate credentials (e.g., a service account).
+          Trigger the task on system startup.
+      2.) Service: Convert your script into a Windows service.
+          Requires more complex setup but provides better control and reliability.
+          Use tools like NSSM (Non-Sucking Service Manager) to create a service from your script.
