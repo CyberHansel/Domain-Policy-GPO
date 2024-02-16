@@ -1,0 +1,23 @@
+* Do Not Modify the Default Domain Policy:
+  - The Default Domain Policy should only contain account policy settings (e.g., password policy, account lockout policy, Kerberos policy). Avoid adding other settings here.
+
+* Do Not Modify the Default Domain Controller Policy:
+  - The Default Domain Controller Policy should focus on User Rights Assignment and Audit Policy. 
+  - For other domain controller settings, create separate GPOs linked to the Domain Controller Organizational Unit (OU).
+
+* Good Organizational Unit (OU) Design:
+  - Organize your objects into OUs based on functionality or department.
+  - Separate users and computers into distinct OUs. For example: Users OU: Apply user policies, Computers OU: Apply computer policies.
+
+* Avoid Setting GPOs at the Domain Level:
+  - Except for the Default Domain Policy, avoid setting GPOs directly at the domain level.
+
+
+* Apply GPOs at the Root OU Level:
+  - Link GPOs at the root of an OU to allow inheritance down the hierarchy.
+  - This avoids the need to link policies to each individual OU.
+
+* Always use security filtering for GPOs
+  - Use GPO Security Filtering to exclude specific OUs or user groups if necessary. 
+
+ 
